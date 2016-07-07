@@ -7,8 +7,8 @@ RUN mkdir -p "$CATALINA_HOME"
 WORKDIR $CATALINA_HOME
 
 # 安装tomcat
-ENV TOMCAT_VERSION 8.5.35
-ENV TOMCAT_TGZ_URL https://www.apache.org/dist/tomcat/tomcat-8/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz
+ENV TOMCAT_VERSION 8.5.3
+ENV TOMCAT_TGZ_URL https://www.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz
 
 # 添加 Tomcat GPG-KEY，用于 Tomcat 文件校验，该数据来自 Tomcat。
 # https://www.apache.org/dist/tomcat/tomcat-8/KEYS

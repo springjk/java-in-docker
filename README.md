@@ -3,11 +3,13 @@
 Hi，JAVA！
 
 JAVA 的项目一般比较复杂，为了标准化流程与简易化部署，本项目根据官方示例构建一套简易的 JAVA 的开发／运行环境，build，ship，run！
+
 ## 快速体验
 ``` bash
 # 根据当前目录的配置后台启动项目容器
 $ docker-composer up
 ```
+
 ## 访问
 * **Windows**
 
@@ -65,11 +67,12 @@ $ docker-composer up -d
 # 跟踪查看启动日志
 $ docker-compose logs -f
 ```
+
 ## 版本信息
 * **JAVA** ：`1.8`
 * **MySQL** ：`5.7`
 * **Maven** ：`3.3.9`
-* **Tomcat** ：`8.5.35`
+* **Tomcat** ：`8.5.3`
 
 版本信息可在 `Dockerfile` 中进行修改满足项目需求，修改 `Dockerfile` 后需要将 `docker-compose` 中的构建方式改为构建本地镜像：
 
@@ -117,8 +120,6 @@ $ docker-compose up --build
     └── Dockerfile  # MySQL 构建文件
 ``` 
 
-
-
 ## 工作流程
 1. 构建 MySQL 镜像
 2. 构建 JAVA-Tomcat-Maven 镜像
@@ -132,7 +133,6 @@ $ docker-compose up --build
 更多请参考 [Docker Docs](https://docs.docker.com/)。
 
 ## License
-
 MIT
 
 
