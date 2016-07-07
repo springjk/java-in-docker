@@ -1,0 +1,28 @@
+tomcat:
+  build: .
+  links:
+    - "mysql"
+  # 将容器的8080端口绑定到宿主机的9527端口
+  ports:
+    - "9527:8080"
+  command: "bash /tmp/build.sh"
+  # volumes:
+    # 挂载 Maven 的缓存目录
+    # - ~/docker-volumes/java-in-docker/maven:/root/.m2
+    # 挂载 Tomcat 的 log 目录
+    # - ~/docker-volumes/java-in-docker/tomcat:/usr/local/tomcat/logs
+    # 挂载 JAVA 源代码目录
+    # - ~/Documents/Project/java-in-docker/code:/tmp/code
+mysql:
+  build: ./mysql
+  expose:
+    - "3306"
+  # 将容器的3306端口绑定到宿主机的3360端口
+  # ports:
+  #   - "3360:3306"
+  environment:
+    MYSQL_DATABASE: docker
+    MYSQL_ROOT_PASSWORD: docker
+  # volumes:
+  # 挂载 Mysql 数据目录，持久化数据库。
+  #   - ~/docker-volumes/java-in-docker/mysql:/var/lib/mysql
