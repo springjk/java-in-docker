@@ -19,7 +19,7 @@ $ docker-composer up
 
 [http://127.0.0.1:9527](http://127.0.0.1:9527)
 
-* **旧版 Windows / Mac OS toolbox**
+* **Windows / Mac OS [Toolbox](https://docs.docker.com/docker-for-mac/docker-toolbox/)**
 
 访问**虚拟机**所在 IP 的 `9527` 端口。
 
@@ -56,6 +56,8 @@ $ docker-machine ip
 
 * `/root/.m2` 	Maven 的 jar 包缓存目录，挂载后将无需每次构建都去下载。
 * `/var/lib/mysql` MySQL 的文件存放目录，必须挂载，否则销毁容器后数据丢失。
+
+Windows 下挂载目录写法示例：`d:/project/`，MAC OS 与 Linux 下如挂载目录后出现无法写入则是权限问题，对挂载文件夹给与 777 权限即可。
 
 ## 项目部署
 数据库信息，暴露端口等信息都在 `docker-compose.yml` 中配置，一切调试完成后可在启动命令后添加 `-d` 参数，让其后台启动，此时如果想实时查看启动日志可以使用 `docker-compose logs -f` 进行查看。
@@ -121,6 +123,8 @@ $ docker-compose up --build
 ``` 
 
 ## 工作流程
+`Dockerfile -->(build)–> Image -->(run)–> Container`
+
 1. 构建 MySQL 镜像
 2. 构建 JAVA-Tomcat-Maven 镜像
 3. 拷贝 `docker-compose.yml` 同级的示例代码 `code` 放入镜像 `/tmp/code`

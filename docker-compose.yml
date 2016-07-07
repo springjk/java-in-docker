@@ -9,7 +9,7 @@ java-maven-tomcat:
   ports:
     - "9527:8080"
   command: "bash /tmp/build.sh"
-  volumes:
+  # volumes:
     # 挂载 Maven 的缓存目录
     # - ~/docker-volumes/java-in-docker/maven:/root/.m2
     # 挂载 Tomcat 的 log 目录
