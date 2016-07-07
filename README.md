@@ -47,7 +47,7 @@ $ docker-machine ip
 * **DB_USER_NAME** : `root`
 * **DB_USER_PWD** : `docker`
 
-此处的数据库连接地址 `DB_HOST` 值为 `mysql` 是因为名为 `tomcat` 的容器 `link` 了名为 `mysql` 的容器，故 `tomcat` 容器中会在自己的 `/etc/hosts` 中添加一条 `1xx.xx.xx.xx   mysql` 的 host，这会将 `http://mysql` 这个地址指向 `mysql` 容器的实际内网地址，等效于常见的 `http://localhost` 。
+此处的数据库连接地址 `DB_HOST` 值为 `mysql` 是因为名为 `java-maven-tomcat` 的容器 `link` 了名为 `mysql` 的容器，故 `java-maven-tomcat` 容器中会在自己的 `/etc/hosts` 中添加一条 `1xx.xx.xx.xx   mysql` 的 host，这会将 `http://mysql` 这个地址指向 `mysql` 容器的实际内网地址，等效于常见的 `http://localhost` 。
 
 ## 数据持久化
 容器内的数据会随着容器的销毁而丢失，所以建议配置 `docker-compose.yml` 文件将以下目录同步到你的物理机目录进行持久化：
@@ -71,7 +71,7 @@ $ docker-compose logs -f
 * **Maven** ：`3.3.9`
 * **Tomcat** ：`8.5.35`
 
-版本信息可在 `Dockerfile` 中进行修改满足项目需求，修改 `Dockerfile` 需要将 `docker-compose` 中的构建方式改为构建本地镜像：
+版本信息可在 `Dockerfile` 中进行修改满足项目需求，修改 `Dockerfile` 后需要将 `docker-compose` 中的构建方式改为构建本地镜像：
 
 ``` bash
 # 免构建镜像
@@ -116,6 +116,18 @@ $ docker-compose up --build
 └── mysql
     └── Dockerfile  # MySQL 构建文件
 ``` 
+
+
+
+## 工作流程
+1. 构建 MySQL 镜像
+2. 构建 JAVA-Tomcat-Maven 镜像
+3. 拷贝 `docker-compose.yml` 同级的示例代码 `code` 放入镜像 `/tmp/code`
+4. 如已挂载代码目录则使用挂载目录覆盖镜像中的 `/tmp/code`
+5. 启动 MySQL 镜像
+6. 启动 JAVA-Tomcat-Maven 镜像
+7. 执行 Maven 代码构建脚本 `build.sh` 生成 WAR 包并放入 Tomcat 工作目录
+8. 启动 Tomcat
 
 更多请参考 [Docker Docs](https://docs.docker.com/)。
 

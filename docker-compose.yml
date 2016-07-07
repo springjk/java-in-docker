@@ -1,4 +1,4 @@
-tomcat:
+java-maven-tomcat:
   # 免构建镜像
   image: registry.aliyuncs.com/springjk/java-maven-tomcat
   # 构建本地镜像
