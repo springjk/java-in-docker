@@ -7,7 +7,7 @@ JAVA 的项目一般比较复杂，为了标准化流程与简易化部署，本
 ## 快速体验
 ``` bash
 # 根据当前目录的配置后台启动项目容器
-$ docker-composer up
+$ docker-compose up
 ```
 
 ## 访问
@@ -65,7 +65,7 @@ Windows 下挂载目录写法示例：`d:/project/`，MAC OS 与 Linux 下如挂
 ``` bash
 # 后台启动运行
 $ docker-composer up -d
-	
+
 # 跟踪查看启动日志
 $ docker-compose logs -f
 ```
@@ -120,7 +120,7 @@ $ docker-compose up --build
 ├── docker-compose.yml  # docker-compose 配置文件
 └── mysql
     └── Dockerfile  # MySQL 构建文件
-``` 
+```
 
 ## 工作流程
 `Dockerfile -->(build)–> Image -->(run)–> Container`
