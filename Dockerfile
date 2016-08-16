@@ -1,6 +1,9 @@
 # 安装maven
 FROM maven:3.3.9-jdk-8
 
+#设置时区
+RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+
 ENV CATALINA_HOME /usr/local/tomcat
 ENV PATH $CATALINA_HOME/bin:$PATH
 RUN mkdir -p "$CATALINA_HOME"
