@@ -5,7 +5,7 @@ cp -r /tmp/code /tmp/build
 cd /tmp/build && mvn dependency:resolve
 
 # 构建应用
-cd /tmp/build && mvn package -Dmaven.test.skip=true
+cd /tmp/build && mvn clean package -Dmaven.test.skip=true
 
 # 拷贝编译结果到指定目录
 rm -rf $CATALINA_HOME/webapps/*
