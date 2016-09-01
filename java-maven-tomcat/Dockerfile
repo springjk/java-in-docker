@@ -48,9 +48,6 @@ RUN set -x \
 # 拷贝部署脚本到镜像
 ADD build.sh /tmp/
 
-# 拷贝源码到镜像
-ADD code /tmp/code
-
 # 允许挂载 Tomcat 日志目录
 VOLUME /usr/local/tomcat/logs
 
