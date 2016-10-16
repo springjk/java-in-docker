@@ -2,7 +2,7 @@
 ## 背景
 Hi，JAVA！
 
-JAVA 的项目通常都比较繁琐，为了标准化流程与简易化部署，本项目根据官方示例构建一套简易的 JAVA 的开发／运行环境，build，ship，run！
+JAVA 的项目通常都比较繁琐，为了标准化流程与简易化部署，本项目根据官方示例构建一套简易的 JAVA 的开发／运行环境（Ubuntu, Tomcat, Maven and JAVA Stack），最终达到 build，ship，run！
 
 ## 依赖
 
@@ -10,7 +10,7 @@ JAVA 的项目通常都比较繁琐，为了标准化流程与简易化部署，
 * [Docker](https://www.docker.com/products/docker/) `>= 1.12`
 * [Docker-Compose](https://www.docker.com/products/docker/) `Windows/macOS 版 Docker 已包含`
 
-因为众所周知的原因，梯子不够坚固的童鞋请使用 [国内镜像](http://get.daocloud.io/) 以及 [加速器](https://www.daocloud.io/mirror.html#accelerator-doc)。
+> 由于众所周知的原因，梯子不够坚固的童鞋请使用 [国内镜像](http://get.daocloud.io/) 以及 [加速器](https://www.daocloud.io/mirror.html#accelerator-doc)。
 
 ## 快速体验
 1. `$ git clone https://github.com/springjk/java-in-docker`
@@ -18,15 +18,17 @@ JAVA 的项目通常都比较繁琐，为了标准化流程与简易化部署，
 3. `$ docker-compose up`
 4. 访问 [http://127.0.0.1](http://127.0.0.1)
 
+<!-- more -->
+
 ![java-in-docker](http://oac57xnsh.bkt.clouddn.com/java-in-docker.jpg)
 
 运维命令：
 
 ```bash
-docker-compose help   # docker-compose 命令帮助
-docker-compose up     # 创建并启动 docker 编排服务
-docker-compose down   # 停止并移除 docker 编排服务 (更改配置文件时建议使用)
-docker-compose exec java-maven-tomcat bash # ssh 登入 java 容器
+$ docker-compose help   # docker-compose 命令帮助
+$ docker-compose up     # 创建并启动 docker 编排服务
+$ docker-compose down   # 停止并移除 docker 编排服务 (更改配置文件时建议使用)
+$ docker-compose exec java-maven-tomcat bash # ssh 登入 java 容器
 ```
 
 
@@ -38,8 +40,8 @@ docker-compose exec java-maven-tomcat bash # ssh 登入 java 容器
 2. `$ docker-compose up`
 
 ### 导入到项目中
-1. `cd {your-project-path}`
-2. `git submodule add https://github.com/springjk/java-in-docker`
+1. `$ cd {your-project-path}`
+2. `$ git submodule add https://github.com/springjk/java-in-docker`
 2. `$ cd java-in-docker`
 3. `$ docker-compose up`
 
