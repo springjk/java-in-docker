@@ -18,7 +18,7 @@ JAVA 的项目通常都比较繁琐，为了标准化流程与简易化部署，
 3. `$ docker-compose up`
 4. 访问 [http://127.0.0.1](http://127.0.0.1)
 
-![](http://oac57xnsh.bkt.clouddn.com/2016-10-16-14766211732437.jpg)
+![java-in-docker](http://oac57xnsh.bkt.clouddn.com/java-in-docker.jpg)
 
 运维命令：
 
