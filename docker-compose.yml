@@ -1,13 +1,14 @@
 java-maven-tomcat:
-  # 免构建镜像
+  # 免构建镜像，未修改构建文件下等同于构建本地镜像，如使用本地 build 需注释此行。
   image: registry.cn-hangzhou.aliyuncs.com/springjk/java-maven-tomcat
   # 构建本地镜像
   # build: ./java-maven-tomcat
   links:
     - "mysql"
-  # 将容器的8080端口绑定到宿主机的9527端口
+  # 将容器的8080端口绑定到宿主机的80端口
   ports:
-    - "9527:8080"
+    - "80:8080"
+  # java-maven-tomcat 容器启动后的运行命令
   command: "bash /tmp/build.sh"
   volumes:
     # 挂载 Maven 的缓存目录
