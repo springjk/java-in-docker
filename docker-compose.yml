@@ -17,6 +17,7 @@ java-maven-tomcat:
     - ./log/tomcat:/usr/local/tomcat/logs
     # 挂载 JAVA 源代码目录
     - ./code:/tmp/code
+  restart: always
 mysql:
   build: ./mysql
   expose:
@@ -30,3 +31,4 @@ mysql:
   volumes:
   # 挂载 Mysql 数据目录，持久化数据库。
     - ./data/mysql:/var/lib/mysql
+  restart: always
