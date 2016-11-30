@@ -1,6 +1,3 @@
-FROM mysql:5.7
-
-#设置时区
-RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+FROM mysql:5.7.16
 
 EXPOSE 3306
