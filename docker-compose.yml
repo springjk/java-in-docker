@@ -12,7 +12,7 @@ java-maven-tomcat:
   command: "bash /tmp/build.sh"
   volumes:
     # 挂载 Maven 的缓存目录
-    - ./data/maven:/root/.m2
+    - ./data/maven:/usr/share/maven/ref/repository
     # 挂载 Tomcat 的 log 目录
     - ./log/tomcat:/usr/local/tomcat/logs
     # 挂载 JAVA 源代码目录
