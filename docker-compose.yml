@@ -1,5 +1,5 @@
 java-maven-tomcat:
-  # 免构建镜像，未修改构建文件下等同于构建本地镜像，如使用本地 build 需注释此行。
+  # 免构建镜像，未修改构建文件下等同于构建本地镜像，如使用本地 build 需注释此行并关闭 build 注释。
   image: registry.cn-hangzhou.aliyuncs.com/springjk/java-maven-tomcat
   # 构建本地镜像
   # build: ./java-maven-tomcat
