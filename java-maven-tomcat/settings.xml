@@ -4,18 +4,26 @@
                       https://maven.apache.org/xsd/settings-1.0.0.xsd">
   <localRepository>/usr/share/maven/ref/repository</localRepository>
   <mirrors>
+    <!-- 阿里云仓库 -->
     <mirror>
-        <!--This sends everything else to /public -->
-        <id>aliyun-nexus</id>
-        <mirrorOf>*</mirrorOf> 
-        <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+      <id>alimaven</id>
+      <mirrorOf>central</mirrorOf>
+      <name>aliyun maven</name>
+      <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
     </mirror>
+    <!-- 中央仓库1 -->
     <mirror>
-        <!--This is used to direct the public snapshots repo in the 
-            profile below over to a different nexus group -->
-        <id>aliyun-nexus-public-snapshots</id>
-        <mirrorOf>public-snapshots</mirrorOf> 
-        <url>http://maven.aliyun.com/nexus/content/repositories/snapshots/</url>
-      </mirror>
-    </mirrors>
+      <id>repo1</id>
+      <mirrorOf>central</mirrorOf>
+      <name>Human Readable Name for this Mirror.</name>
+      <url>http://repo1.maven.org/maven2/</url>
+    </mirror>
+  <!-- 中央仓库2 -->
+    <mirror>
+      <id>repo2</id>
+      <mirrorOf>central</mirrorOf>
+      <name>Human Readable Name for this Mirror.</name>
+      <url>http://repo2.maven.org/maven2/</url>
+    </mirror>
+  </mirrors>
 </settings>
