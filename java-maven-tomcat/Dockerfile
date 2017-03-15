@@ -13,7 +13,7 @@ WORKDIR $CATALINA_HOME
 
 # 安装tomcat
 ENV TOMCAT_MAJOR 8
-ENV TOMCAT_VERSION 8.5.11
+ENV TOMCAT_VERSION 8.0.41
 ENV TOMCAT_TGZ_URL http://mirrors.aliyun.com/apache/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz
 
 RUN set -x \
