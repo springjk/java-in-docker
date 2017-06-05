@@ -1,3 +1,4 @@
+# 安全台账系统
 java-maven-tomcat:
   # 免构建镜像，未修改构建文件下等同于构建本地镜像，如使用本地 build 需注释此行并关闭 build 注释。
   image: registry.cn-hangzhou.aliyuncs.com/springjk/java-maven-tomcat
@@ -7,7 +8,7 @@ java-maven-tomcat:
     - mysql
   # 将容器的8080端口绑定到宿主机的80端口
   ports:
-    - "80:8080"
+    - "9090:8080"
   # java-maven-tomcat 容器启动后的运行命令
   command: "bash /tmp/build.sh"
   volumes:
@@ -16,7 +17,31 @@ java-maven-tomcat:
     # 挂载 Tomcat 的 log 目录
     - ./log/tomcat:/usr/local/tomcat/logs
     # 挂载 JAVA 源代码目录
-    - ./code:/tmp/code
+    - ./code/git/ledger:/tmp/code
+    # 挂载 /app/ledger-upload到docker内部/nas
+    - /app/ledger-upload:/nas
+  restart: always
+# 安全平台静态页面代码生成系统
+java-maven-tomcat-jxjyzy-web:
+  image: registry.cn-hangzhou.aliyuncs.com/springjk/java-maven-tomcat
+  # 构建本地镜像
+  #build: ./java-maven-tomcat
+  links:
+    - mysql
+  # 将容器的8080端口绑定到宿主机的80端口
+  ports:
+    - "9191:8080"
+  # java-maven-tomcat 容器启动后的运行命令
+  command: "bash /tmp/build.sh"
+  volumes:
+    # 挂载 Maven 的缓存目录
+    - ./data/maven:/usr/share/maven/ref/repository
+    # 挂载 Tomcat 的 log 目录
+    - ./log/tomcat/jxjyzy:/usr/local/tomcat/logs
+    # 挂载 JAVA 源代码目录
+    - ./code/git/html-web:/tmp/code
+    # 挂载 /app/ledger-web/index到docker内部
+    - /app/ledger-web/index:/app/ledger-web/index
   restart: always
 mysql:
   build: ./mysql
@@ -24,12 +49,12 @@ mysql:
     - "3306"
   # 将容器的3306端口绑定到宿主机的3360端口
   ports:
-    - "3360:3306"
+    - "3366:3306"
   environment:
-    MYSQL_DATABASE: docker
-    MYSQL_ROOT_PASSWORD: docker
+    MYSQL_DATABASE: ledger
+    MYSQL_ROOT_PASSWORD: r00t
   volumes:
   # 挂载 Mysql 数据目录，持久化数据库。
-    - ./data/mysql:/var/lib/mysql
+    - ./data/mysql/SafeSystem:/var/lib/mysql
     - ./config/mysql:/etc/mysql/conf.d
   restart: always
