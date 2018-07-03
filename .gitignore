@@ -1,2 +1,4 @@
-data/
+storage/
 log/
+code/
+.DS_Store
