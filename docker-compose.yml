@@ -11,7 +11,8 @@ services:
       tty: true
       volumes:
         - ${DATA_SAVE_PATH}/maven/.m2:/root/.m2
-        - ./code:/usr/src/mymaven
+        - ./config/maven:/usr/share/maven/ref
+        - ${CODE_PATH}:/usr/src/mymaven
       environment:
         - MYSQL_DATABASE=${MYSQL_DATABASE}
         - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
@@ -35,6 +36,10 @@ services:
         - TZ=${TIMEZONE}
       volumes:
         - ./log/tomcat:/usr/local/tomcat/logs
+      depends_on:
+        - mysql
+      networks:
+        - frontend
       restart: unless-stopped
 
 ### MySQL Container #########################################
@@ -53,4 +58,9 @@ services:
         - ./config/mysql:/etc/mysql/conf.d
       ports:
         - ${MYSQL_PORT}:3306
+      networks:
+        - frontend
       restart: unless-stopped
+
+networks:
+  frontend:
