@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker-compose exec maven mvn clean install -Dmaven.test.skip=true
+docker-compose exec maven mvn clean package -T 4C -Dmaven.test.skip=true  -Dmaven.compile.fork=true
 
 
 set -a

@@ -54,7 +54,7 @@ services:
         - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
         - TZ=${TIMEZONE}
       volumes:
-        - ${DATA_SAVE_PATH}/mysql:/var/lib/mysql
+        # - ${DATA_SAVE_PATH}/mysql:/var/lib/mysql
         - ./config/mysql:/etc/mysql/conf.d
       ports:
         - ${MYSQL_PORT}:3306
