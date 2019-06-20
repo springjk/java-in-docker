@@ -1,5 +1,5 @@
 # 安装maven
-FROM maven:3.3.9-jdk-8
+FROM maven:3.6.1-jdk-8
 
 #设置时区
 RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
@@ -13,7 +13,7 @@ WORKDIR $CATALINA_HOME
 
 # 安装tomcat
 ENV TOMCAT_MAJOR 8
-ENV TOMCAT_VERSION 8.5.14
+ENV TOMCAT_VERSION 8.5.42
 ENV TOMCAT_TGZ_URL http://mirrors.aliyun.com/apache/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz
 
 RUN set -x \
